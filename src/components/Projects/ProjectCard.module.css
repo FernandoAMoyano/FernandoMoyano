@@ -1,0 +1,221 @@
+.projectCard {
+  border-radius: 16px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--text-light);
+  display: flex;
+  flex-direction: column;
+  min-height: 120px;
+}
+
+.projectCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 60% 40%,
+    rgba(255, 255, 255, 0.07) 0%,
+    rgba(255, 255, 255, 0.02) 60%,
+    transparent 100%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+  z-index: 1;
+}
+
+.projectCard:hover::before {
+  opacity: 1;
+}
+
+.projectCard:hover {
+  transform: translateY(-5px);
+}
+
+.projectCard h3 {
+  color: var(--secondary-color);
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.projectCard p {
+  color: var(--tertiary-color);
+  flex: 1;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Tech Icons */
+.techIcons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+  margin-top: 2px;
+  position: relative;
+  z-index: 2;
+}
+
+.techIcon {
+  font-size: 2.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 0;
+  line-height: 1;
+}
+
+/* Tech Icon Colors - Devicon */
+.techIcon.postgresql {
+  color: #336791;
+}
+
+.techIcon.selenium {
+  color: #43B02A;
+}
+
+.techIcon.aws {
+  color: #FF9900;
+}
+
+.techIcon.typescript {
+  color: #3178C6;
+}
+
+.techIcon.nodejs {
+  color: #339933;
+}
+
+.techIcon.express {
+  color: #222;
+}
+
+.techIcon.nestjs {
+  color: #E0234E;
+}
+
+.techIcon.jest {
+  color: #C21325;
+}
+
+/* Tech Icon Colors - Custom SVG */
+.techIcon.python {
+  color: #3776ab;
+}
+
+.techIcon.python :global(svg) {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.techIcon.mysql {
+  color: #00758f;
+}
+
+.techIcon.mysql :global(svg) {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.techIcon.pytest {
+  color: #0a9edc;
+}
+
+.techIcon.pytest :global(svg) {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.techIcon.pydantic :global(svg) {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.techIcon.pydantic :global(svg path) {
+  fill: #e92063;
+}
+
+.techIcon.prisma {
+  color: #2d3748;
+}
+
+.techIcon.prisma :global(svg) {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.techIcon.docker {
+  color: #2496ed;
+}
+
+.techIcon.docker :global(svg) {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.techIcon.jwt {
+  color: #000;
+}
+
+.techIcon.jwt :global(svg) {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+/* Button */
+.btn {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  min-width: 100px;
+  max-width: max-content;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, border 0.3s ease, color 0.3s ease;
+  align-self: flex-start;
+  position: relative;
+  z-index: 2;
+}
+
+.btn:hover {
+  background-color: white;
+  color: #1a1a1a;
+  border: 1px solid var(--primary-color);
+  transform: translateY(-1px);
+}
+
+/* Dark Mode */
+:global(body.dark-mode) .techIcon.express {
+  color: #fff;
+}
+
+:global(body.dark-mode) .techIcon.prisma {
+  color: #fff;
+}
+
+:global(body.dark-mode) .techIcon.jwt {
+  color: #fff;
+}
+
+:global(body.dark-mode) .btn {
+  background-color: var(--primary-color);
+  color: var(--bg-color);
+  border: none;
+}
+
+:global(body.dark-mode) .btn:hover {
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}

@@ -1,0 +1,264 @@
+.section {
+  padding: 100px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1px;
+  width: 200px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(0, 0, 0, 0.1),
+    transparent
+  );
+  margin-top: 60px;
+}
+
+/* Dark Mode - Section Separator */
+:global(body.dark-mode) .section::after {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+}
+
+.section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+/* Tech Carousel Container */
+.techCarouselContainer {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 40px;
+}
+
+.techCarousel {
+  overflow: hidden;
+  position: relative;
+  padding: 20px 0;
+}
+
+.techCarousel::before,
+.techCarousel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.techCarousel::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-color) 0%, transparent 100%);
+}
+
+.techCarousel::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-color) 0%, transparent 100%);
+}
+
+/* Desktop Track - Visible por defecto */
+.techCarouselTrack.desktop {
+  display: flex;
+  gap: 40px;
+  animation: scrollCarousel 30s linear infinite;
+  width: fit-content;
+}
+
+/* Mobile Track - Oculto por defecto */
+.techCarouselTrack.mobile {
+  display: none;
+}
+
+.techCarouselTrack:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollCarousel {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Tech Item Container */
+.techItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.carouselTechIcon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+  transition: transform 0.3s ease;
+}
+
+.carouselTechIcon:hover {
+  transform: translateY(-5px) scale(1.1);
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.25));
+}
+
+.carouselTechIcon :global(svg),
+.carouselTechIcon :global(i) {
+  width: 100%;
+  height: 100%;
+  font-size: 60px;
+}
+
+/* Tech Name */
+.techName {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #b0b0b0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Dark Mode - Tech Name */
+:global(body.dark-mode) .techName {
+  color: #5a5a5a;
+}
+
+/* Colores específicos del carrusel */
+.carouselTechIcon.python :global(svg path) {
+  filter: drop-shadow(0 2px 4px rgba(55, 118, 171, 0.3));
+}
+
+.carouselTechIcon.pydantic :global(svg path) {
+  fill: #e92063;
+}
+
+.carouselTechIcon.postgresql {
+  color: #336791;
+}
+
+.carouselTechIcon.docker :global(svg) {
+  filter: drop-shadow(0 2px 4px rgba(36, 150, 237, 0.3));
+}
+
+.carouselTechIcon.selenium {
+  color: #43b02a;
+}
+
+.carouselTechIcon.aws {
+  color: #ff9900;
+}
+
+.carouselTechIcon.typescript {
+  color: #3178c6;
+}
+
+.carouselTechIcon.nodejs {
+  color: #339933;
+}
+
+.carouselTechIcon.express {
+  color: #000000;
+}
+
+.carouselTechIcon.nestjs {
+  color: #e0234e;
+}
+
+.carouselTechIcon.jest {
+  color: #c21325;
+}
+
+/* Dark Mode - Carousel */
+:global(body.dark-mode) .carouselTechIcon {
+  filter: drop-shadow(0 4px 8px rgba(255, 255, 255, 0.1));
+}
+
+:global(body.dark-mode) .carouselTechIcon:hover {
+  filter: drop-shadow(0 8px 16px rgba(255, 255, 255, 0.2));
+}
+
+:global(body.dark-mode) .carouselTechIcon.express {
+  color: #ffffff;
+}
+
+/* Dark Mode - Pydantic  */
+:global(body.dark-mode) .carouselTechIcon.pydantic :global(svg path) {
+  fill: #e92063;
+}
+
+/* Tech Stack Mobile - Grid estático en lugar de carrusel */
+@media screen and (max-width: 768px) {
+  .section {
+    padding: 60px 20px;
+  }
+
+  .techCarouselContainer {
+    margin-top: 30px;
+  }
+
+  .techCarousel {
+    overflow: visible;
+    padding: 0;
+  }
+
+  .techCarousel::before,
+  .techCarousel::after {
+    display: none;
+  }
+
+  /* Ocultar desktop track en mobile */
+  .techCarouselTrack.desktop {
+    display: none;
+  }
+
+  /* Mostrar mobile track en mobile */
+  .techCarouselTrack.mobile {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px 15px;
+    animation: none;
+    width: 100%;
+    justify-items: center;
+  }
+
+  .carouselTechIcon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .carouselTechIcon :global(svg),
+  .carouselTechIcon :global(i) {
+    width: 100%;
+    height: 100%;
+    font-size: 45px;
+  }
+
+  .techName {
+    font-size: 0.65rem;
+  }
+}

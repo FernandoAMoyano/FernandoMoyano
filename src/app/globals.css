@@ -1,42 +1,153 @@
+/* ==========================================
+   VARIABLES & THEMING
+   ========================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colors */
+  --primary-color: #0d0d0d;
+  --secondary-color: #252625;
+  --tertiary-color: #585959;
+  --quaternary-color: #8c8c8c;
+  --text-light: #d9d9d9;
+
+  /* Layout */
+  --bg-color: #fff;
+  --card-bg: #fff;
+  --header-bg: #fff;
+
+  /* Effects */
+  --shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+
+  /* Sizes */
+  --button-size: 28px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
+/* ==========================================
+   RESET & BASE STYLES
+   ========================================== */
 * {
-  box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+body {
+  font-family: var(--font-poppins), sans-serif;
+  color: var(--secondary-color);
+  background-color: var(--bg-color);
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+/* Typography */
+h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--secondary-color);
+}
+
+h3 {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+p {
+  color: var(--tertiary-color);
+  font-weight: 500;
+  font-size: 18px;
+}
+
+/* ==========================================
+   ANIMATIONS
+   ========================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-40px, -40px);
+  }
+}
+
+@keyframes pulse-signal {
+  0% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  70% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.2);
+  }
+}
+
+@keyframes scroll-carousel {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ==========================================
+   DARK MODE
+   ========================================== */
+body.dark-mode {
+  /* Dark Mode Variables */
+  --primary-color: #f6f6f6;
+  --secondary-color: #e0e0e0;
+  --tertiary-color: #d9d9d9;
+  --text-light: #bdbdbd;
+  --bg-color: #181c22;
+  --bg-button: #111111;
+  --card-bg: #23272f;
+  --header-bg: #20232a;
+  --shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+
+  background-color: var(--bg-color);
+  color: var(--secondary-color);
+}
+
+/* Dark Mode - Status Button */
+body.dark-mode .status-btn {
+  background: #22332a;
+  color: #28d160;
+  box-shadow: 0 1px 4px rgba(40, 209, 96, 0.07);
+}
+
+body.dark-mode .status-dot {
+  background: #28d160;
+  box-shadow: 0 0 4px #28d16080;
+}
+
+/* Dark Mode - Theme Toggle */
+body.dark-mode .theme-switch-track {
+  background: #2d3748;
+}
+
+body.dark-mode .theme-switch-track::before {
+  opacity: 0.5;
+}
+
+body.dark-mode .theme-switch-track::after {
+  opacity: 1;
+}
+
+body.dark-mode .theme-switch-thumb {
+  left: 33px;
+  background: #1a202c;
 }

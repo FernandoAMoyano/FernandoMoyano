@@ -1,0 +1,211 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.popupContent {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  text-align: left;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.popupClose {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--primary-color);
+  line-height: 1;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popupClose:hover {
+  opacity: 0.7;
+}
+
+.popupContent h3 {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  padding-right: 30px;
+}
+
+.popupContent h4 {
+  color: var(--secondary-color);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.popupContent p {
+  color: var(--tertiary-color);
+  margin-bottom: 1rem;
+  font-size: 16px;
+}
+
+/* Tech List */
+.techList {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 20px;
+}
+
+.techItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.techItem:last-child,
+.techItem:nth-last-child(2):nth-child(odd) {
+  border-bottom: none;
+}
+
+.techItem .techIcon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.techItem .techIcon :global(svg) {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.techName {
+  font-weight: 500;
+  color: var(--secondary-color);
+  font-size: 0.95rem;
+}
+
+/* Tech Icon Colors - Same as ProjectCard */
+.techIcon.postgresql {
+  color: #336791;
+}
+
+.techIcon.python {
+  color: #3776ab;
+}
+
+.techIcon.mysql {
+  color: #00758f;
+}
+
+.techIcon.pytest {
+  color: #0a9edc;
+}
+
+.techIcon.pydantic :global(svg path) {
+  fill: #e92063;
+}
+
+.techIcon.prisma {
+  color: #2d3748;
+}
+
+.techIcon.docker {
+  color: #2496ed;
+}
+
+.techIcon.jwt {
+  color: #000;
+}
+
+.techIcon.express {
+  color: #222;
+}
+
+.techIcon.nestjs {
+  color: #E0234E;
+}
+
+.techIcon.selenium {
+  color: #43B02A;
+}
+
+.techIcon.aws {
+  color: #FF9900;
+}
+
+.techIcon.typescript {
+  color: #3178C6;
+}
+
+.techIcon.nodejs {
+  color: #339933;
+}
+
+.techIcon.jest {
+  color: #C21325;
+}
+
+/* Links */
+.links {
+  margin-top: 1.5rem;
+}
+
+.links p {
+  margin-bottom: 0.5rem;
+}
+
+.links a {
+  color: rgb(111, 111, 224);
+  word-break: break-all;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+/* Dark Mode */
+:global(body.dark-mode) .popupContent {
+  background: var(--card-bg);
+  color: var(--primary-color);
+}
+
+:global(body.dark-mode) .techItem {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+:global(body.dark-mode) .techItem:last-child,
+:global(body.dark-mode) .techItem:nth-last-child(2):nth-child(odd) {
+  border-bottom: none;
+}
+
+:global(body.dark-mode) .techIcon.express {
+  color: #fff;
+}
+
+:global(body.dark-mode) .techIcon.prisma {
+  color: #fff;
+}
+
+:global(body.dark-mode) .techIcon.jwt {
+  color: #fff;
+}

@@ -1,0 +1,131 @@
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 0 20px;
+}
+
+.heroBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: drift 30s linear infinite;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* Dark Mode Grid */
+:global(body.dark-mode) .heroBackground {
+  background-image: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  opacity: 0.7;
+}
+
+.heroContent {
+  z-index: 1;
+}
+
+.heroTitle {
+  z-index: 1;
+  font-size: 64px;
+  font-weight: bold;
+  animation: fadeInUp 2s ease-out;
+  line-height: 1.2;
+  color: var(--primary-color);
+}
+
+.hero h3 {
+  margin-top: 1rem;
+  color: var(--tertiary-color);
+}
+
+/* Status Button */
+.statusBtn {
+  display: inline-flex;
+  align-items: center;
+  background: #eafbe7;
+  color: #218838;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 20px;
+  padding: 4px 14px 4px 8px;
+  margin-top: 10px;
+  gap: 7px;
+  border: none;
+  box-shadow: 0 1px 4px rgba(33, 136, 56, 0.07);
+  user-select: none;
+  position: relative;
+}
+
+/* Dark Mode Status Button */
+:global(body.dark-mode) .statusBtn {
+  background: #22332a;
+  color: #28d160;
+  box-shadow: 0 1px 4px rgba(40, 209, 96, 0.07);
+}
+
+.statusDot {
+  width: 10px;
+  height: 10px;
+  background: #28d160;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 4px;
+  box-shadow: 0 0 4px #28d16080;
+  position: relative;
+  z-index: 1;
+}
+
+.statusDot::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  background: rgba(40, 209, 96, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  animation: pulseSignal 1.5s infinite;
+}
+
+/* Animations */
+@keyframes pulseSignal {
+  0% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  70% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.2);
+  }
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .heroTitle {
+    font-size: 40px;
+  }
+}
